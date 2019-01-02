@@ -1,0 +1,21 @@
+.nav {
+    display: flex;     
+    align-items: center;
+    background: #7a9e7e; 
+    color: #e8f1f2;
+}
+
+.nav-item {
+    margin: 10px 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.nav-center{
+    flex: 1;
+    text-align: center;
+}
+
+.nav-right {
+    margin-left: auto;
+}
