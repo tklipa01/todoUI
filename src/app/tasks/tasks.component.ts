@@ -36,42 +36,40 @@ export class TasksComponent {
         }        
     }
 
-    async completeTaskHandler(id: string): Promise<void> {
-        this.loadingTasks = true;
+    async completeTaskHandler(id: string): Promise<void> {        
         try {            
             await this.todoApi.updateTask(id, new Task({completed: true, completedOn: new Date()}));
             let completedTask = this.activeTasks.find(t => t._id === id);
             completedTask.completed = true;
             this.activeTasks = this.activeTasks.filter(t => t._id !== id);
-            this.completedTasks.unshift(completedTask);
+            this.completedTasks.unshift(new Task({
+                _id: completedTask._id,
+                userId: completedTask.userId,
+                title: completedTask.title,
+                details: completedTask.details,
+                completed: completedTask.completed,
+                completedOn: completedTask.createdOn
+            }));
         } catch(err) {
             console.error(`Failed to complete task!`);
-        } finally {
-            this.loadingTasks = false;
         }
     }
 
-    async deleteTaskHandler(id: string): Promise<void> {
-        this.loadingTasks = true;
+    async deleteTaskHandler(id: string): Promise<void> {        
         try {
-            await this.todoApi.deleteTask(id);
+            await this.todoApi.deleteTask(id);                        
             this.activeTasks = this.activeTasks.filter(t => t._id !== id);
         } catch(err) {
             console.error(`Failed to delete task!`);
-        } finally {
-            this.loadingTasks = false;
         }
     }
 
-    async deleteAllCompletedHandler(): Promise<void> {
-        this.loadingTasks = true;
+    async deleteAllCompletedHandler(): Promise<void> {        
         try {
             await this.todoApi.deleteAllCompleted(this.auth.userProfile.sub);
             this.completedTasks = [];
         } catch(err) {
             console.error(`Failed to delete all completed tasks!`);
-        } finally {
-            this.loadingTasks = false;
         }
     }
 
@@ -90,11 +88,11 @@ export class TasksComponent {
         }
     }
 
-    switchTab() {
-        if(this.selectedTab === TaskList.Active){
-            this.selectedTab = TaskList.Completed;
-        } else {
+    switchTab(tab: TaskList) {
+        if(tab === TaskList.Active){
             this.selectedTab = TaskList.Active;
+        } else if(tab === TaskList.Completed){
+            this.selectedTab = TaskList.Completed;
         }
     }
 }

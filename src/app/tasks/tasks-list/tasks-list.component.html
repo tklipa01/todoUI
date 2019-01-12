@@ -10,7 +10,7 @@
         <h2>Get to work!</h2>
     </div>
 </div>
-<div *ngFor="let task of tasks" class="tasks-list">
+<div *ngFor="let task of tasks" class="tasks-list" [@slideInOut]="task.animState">
     <task [task]="task" (completeTaskEventEmitter)="completeTaskHandler($event)" (deleteTaskEventEmitter)="deleteTaskHandler($event)"></task>
 </div>
 

@@ -7,6 +7,8 @@ export class Task {
     completed: boolean;    
     completedOn?: Date;
 
+    animState: string;
+
     constructor(init?: Partial<Task>) {
         Object.assign(this, init);
         if(init){
