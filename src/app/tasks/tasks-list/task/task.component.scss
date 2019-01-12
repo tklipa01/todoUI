@@ -38,13 +38,13 @@
 }
 
 .complete-task {
-    display: none;
     margin-right: 5px;
+    color: darken($task-bg-color, 10%);
 }
 
 .delete-task {
-    display: none;
     margin-left: 5px;
+    color: darken($task-bg-color, 10%);
 }
 
 .edit-task {
@@ -61,8 +61,7 @@
 }
 
 .header {
-    display: flex;
-    align-items: center;
+    display: flex;    
 }
 
 .title {
@@ -75,3 +74,8 @@
     font-size: 1em;    
 }
 
+@media (max-width: 1000px) {
+    .task {
+        font-size: 1.25em;
+    }
+}

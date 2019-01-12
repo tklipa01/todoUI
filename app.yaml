@@ -1,9 +1,11 @@
 runtime: python27
-api_version: 1
 threadsafe: true
+api_version: 1
+
 handlers:
-- url: /
+- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico))$
+  static_files: todoUI/\1
+  upload: todoUI/(.*)
+- url: /(.*)
   static_files: todoUI/index.html
   upload: todoUI/index.html
-- url: /
-  static_dir: todoUI/

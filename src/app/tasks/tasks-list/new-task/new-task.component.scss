@@ -52,3 +52,13 @@ hr {
 .cancel-task:hover {
     color: darken($danger-color, 10%);
 }
+
+@media (max-width: 1000px) {
+    .task,
+    .ghost-task {
+        font-size: 1.25em;
+    }
+    input {
+        font-size: 1.25em;
+    }
+}

@@ -9,9 +9,6 @@
             </div>            
         </ng-container>
         <ng-container *ngIf="!task.completed">
-            <div class="task-status">
-                <i class="fas fa-circle fa-2x"></i>
-            </div>
             <div class="edit-task clickable" (click)="editTask(task)" style="display: none;">                
                 <span class="fa-stack">
                     <i class="fas fa-circle fa-stack-2x"></i>
