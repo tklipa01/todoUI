@@ -10,13 +10,6 @@
 </div>
 
 <div class="tasks-small">
-    <div class="active-tasks" *ngIf="selectedTab === taskListEnum.Active">
-        <tasks-list [tasks]="activeTasks" [type]="taskListEnum.Active" (completeTaskEventEmitter)="completeTaskHandler($event)" (deleteTaskEventEmitter)="deleteTaskHandler($event)"
-            (createTaskEventEmitter)="createTaskHandler($event)"></tasks-list>
-    </div>
-    <div class="completed-tasks" *ngIf="selectedTab === taskListEnum.Completed">
-        <tasks-list [tasks]="completedTasks" [type]="taskListEnum.Completed" (deleteAllCompletedEventEmitter)="deleteAllCompletedHandler()"></tasks-list>
-    </div>  
     <div class="tabs">
         <div class="tab-item clickable" [ngClass]="{'tab-item-active' : selectedTab === taskListEnum.Active}" (click)="switchTab()">
             Active
@@ -25,4 +18,11 @@
             Completed
         </div>
     </div>
+    <div class="active-tasks" *ngIf="selectedTab === taskListEnum.Active">
+        <tasks-list [tasks]="activeTasks" [type]="taskListEnum.Active" (completeTaskEventEmitter)="completeTaskHandler($event)" (deleteTaskEventEmitter)="deleteTaskHandler($event)"
+            (createTaskEventEmitter)="createTaskHandler($event)"></tasks-list>
+    </div>
+    <div class="completed-tasks" *ngIf="selectedTab === taskListEnum.Completed">
+        <tasks-list [tasks]="completedTasks" [type]="taskListEnum.Completed" (deleteAllCompletedEventEmitter)="deleteAllCompletedHandler()"></tasks-list>
+    </div>      
 </div>
