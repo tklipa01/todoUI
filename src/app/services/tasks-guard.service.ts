@@ -8,7 +8,7 @@ export class TasksGuardService implements CanActivate {
   constructor(public auth: AuthService, public router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    if (!this.auth.isAuthenticated()) {
+    if (!this.auth.isAuthenticated() || !this.auth.userProfile) {
       this.router.navigate(['']);
       return false;
     }

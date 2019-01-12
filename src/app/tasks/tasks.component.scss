@@ -1,0 +1,60 @@
+@import './../../colors.scss';
+
+.tasks-large {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);    
+    grid-template-rows: auto 1fr;
+}
+
+.active-tasks {
+    grid-column: 1/3;
+}
+
+.completed-tasks {
+    grid-column: 3/4;
+}
+
+.tasks-small {
+    display: none;
+}
+
+.tabs {    
+    width: 100%;
+    min-height: 48px;
+    display: flex;     
+    align-items: center;
+    justify-content: space-around;
+    background: $primary-color; 
+    color: #e8f1f2;
+}
+
+.tab-item {
+    padding: 10px 10px;
+    font-size: 20px;    
+}
+
+.tab-item-active {
+    font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+    .tasks-large {
+        display: none;
+    }
+
+    .tasks-small {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 48px);      
+    }    
+
+    .active-tasks {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    .completed-tasks {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+}

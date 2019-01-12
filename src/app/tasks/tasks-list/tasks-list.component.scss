@@ -1,0 +1,33 @@
+@import './../../../colors.scss';
+
+.tasks-list,
+.actions{
+    margin: 10px;
+}
+
+.btn-delete {
+    width: 100%;
+    background-color: lighten($danger-color, 10%);
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background-color: $danger-color;
+}
+
+.btn-delete:active {
+    background-color: darken($danger-color, 5%);
+}
+
+.btn-delete:focus {
+    background-color: $danger-color;
+}
+

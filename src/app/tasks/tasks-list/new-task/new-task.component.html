@@ -1,0 +1,14 @@
+<div [ngClass]="{'ghost-task' : !editing, 'task': editing}">
+    <input type="text" [(ngModel)]="task.title" (ngModelChange)="isEditing()" placeholder="Create new task" />
+    <div *ngIf="editing" class="more-detail">        
+        <input type="text" [(ngModel)]="task.details" (ngModelChange)="isEditing()" placeholder="Details (optional)" />
+        <div class="actions">
+            <div class="create-task clickable" (click)="createTask()">
+                <i class="fas fa-check-circle fa-2x"></i>
+            </div>
+            <div class="cancel-task clickable" (click)="resetTask()">
+                <i class="fas fa-times-circle fa-2x"></i>
+            </div>
+        </div>
+    </div>    
+</div>

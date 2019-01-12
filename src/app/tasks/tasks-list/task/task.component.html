@@ -1,0 +1,33 @@
+<div class="task">
+    <div class="header">
+        <div class="title">
+            {{task.title}}
+        </div>
+        <ng-container *ngIf="task.completed">
+            <div class="completed-task">
+                <i class="fas fa-check-circle fa-2x"></i>
+            </div>            
+        </ng-container>
+        <ng-container *ngIf="!task.completed">
+            <div class="task-status">
+                <i class="fas fa-circle fa-2x"></i>
+            </div>
+            <div class="edit-task clickable" (click)="editTask(task)" style="display: none;">                
+                <span class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-pencil-alt fa-stack-1x fa-inverse"></i>
+                </span>
+            </div>
+            <div class="complete-task clickable" (click)="completeTask(task._id)">
+                <i class="fas fa-check-circle fa-2x"></i>
+            </div>               
+            <div class="delete-task clickable" (click)="deleteTask(task._id)">
+                <i class="fas fa-times-circle fa-2x"></i>
+            </div>                     
+        </ng-container>
+    </div>
+    
+    <div class="details">
+        {{task.details}}
+    </div>
+</div>

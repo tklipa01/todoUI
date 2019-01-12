@@ -6,4 +6,11 @@ export class Task {
     createdOn: Date;    
     completed: boolean;    
     completedOn?: Date;
+
+    constructor(init?: Partial<Task>) {
+        Object.assign(this, init);
+        if(init){
+            this.createdOn = new Date(init.createdOn);
+        }
+    }
 }

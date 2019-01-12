@@ -2,8 +2,8 @@
     <div class="nav">
         <div class="nav-item nav-title">ToDo</div>
         <div class="nav-item nav-center">{{auth.userProfile?.nickname}}</div>
-        <div *ngIf="!auth.isAuthenticated()" (click)="auth.login()" class="nav-item nav-right clickable">Login</div>
-        <div *ngIf="auth.isAuthenticated()" (click)="auth.logout()" class="nav-item nav-right clickable">Logout</div>
+        <div *ngIf="!auth.isAuthenticated()" (click)="auth.login()" class="nav-item nav-right login clickable">Login</div>
+        <div *ngIf="auth.isAuthenticated()" (click)="auth.logout()" class="nav-item nav-right logout clickable">Logout</div>
     </div>
 </nav>
 

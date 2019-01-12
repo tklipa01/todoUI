@@ -28,7 +28,7 @@ export class AppComponent {
     if(this.auth.userProfile){
       this.profile = this.auth.userProfile;            
     } else {
-        this.auth.getProfile((err: any, profile: Profile) => {
+        this.auth.getProfile((_:any, profile: Profile) => {
             this.profile = profile;
         });
     } 

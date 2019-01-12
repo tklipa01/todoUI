@@ -1,0 +1,54 @@
+@import '../../../../colors.scss';
+
+.task,
+.ghost-task {
+    background-color: rgba($task-bg-color, .7);
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.task {
+    background-color: $task-bg-color;
+}
+
+input {
+    /*yuck; figure out how to stop input from overflowing its container*/
+    width: calc(100% - 20px);
+    padding: 10px;    
+    border: none;
+    border-radius: 7px;
+    background-color: darken($task-bg-color, 10%);
+    color: black;
+}
+
+.more-detail {
+    margin-top: 10px;
+}
+
+hr {
+    border: 1px solid $body-bg-color;
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-task {
+    color: $success-color;
+    margin-right: 5px;
+}
+
+.create-task:hover {
+    color: darken($success-color, 10%);
+}
+
+.cancel-task {
+    color: $danger-color;
+    margin-left: 5px;
+}
+
+.cancel-task:hover {
+    color: darken($danger-color, 10%);
+}

@@ -1,12 +1,17 @@
+@import '../colors.scss';
+
+$nav-bg-color: $primary-color;
+
 .nav {
     display: flex;     
     align-items: center;
-    background: #7a9e7e; 
+    background: $nav-bg-color; 
     color: #e8f1f2;
+    height: 48px;
 }
 
 .nav-item {
-    margin: 10px 10px;
+    padding: 10px 10px;
     font-size: 20px;
     font-weight: 700;
 }
@@ -16,6 +21,7 @@
     text-align: center;
 }
 
-.nav-right {
-    margin-left: auto;
+.login:hover,
+.logout:hover {
+    background-color: lighten($nav-bg-color, 10%);
 }

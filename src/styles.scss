@@ -1,12 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import './colors.scss';
+
 body {
     margin: 0;
-    background-color: #e8f1f2;
+    background-color: $body-bg-color;
     font-family: "Open Sans";
 }
 
 .clickable {
     cursor: pointer;
+}
+
+.success {
+  color: #7dcd85;
 }
 
 .lds-dual-ring {
@@ -21,8 +27,8 @@ body {
     height: 46px;
     margin: 1px;
     border-radius: 50%;
-    border: 5px solid #7a9e7e;
-    border-color: #7a9e7e transparent #7a9e7e transparent;
+    border: 5px solid $primary-color;
+    border-color: $primary-color transparent $primary-color transparent;
     animation: lds-dual-ring 1.2s linear infinite;
   }
   @keyframes lds-dual-ring {

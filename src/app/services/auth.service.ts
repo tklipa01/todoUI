@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
-import { CanActivate } from '@angular/router';
 import { Profile } from '../models/profile';
+import { browser } from 'protractor';
 
 
 @Injectable()
@@ -11,8 +10,7 @@ export class AuthService {
 
   public userProfile: Profile;
 
-  private requestedScopes: string = 'openid profile';
-
+  private requestedScopes = 'openid profile';
   private accessTokenKey = 'access_token';
   private idTokenKey = 'id_token';
   private expiresAtKey = 'expires_at';
@@ -22,12 +20,12 @@ export class AuthService {
     clientID: 'SNkl18d3r4OPTob3uTa8n1UR7mUsx2mG',
     domain: 'my-todo.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/callback',
+    redirectUri: 'http://localhost:4200/tasks',
     audience: 'todoAPI',
     scope: this.requestedScopes
   });
 
-  constructor(public router: Router) {
+  constructor(private router: Router) {
   }
 
   public login(): void {
@@ -36,10 +34,10 @@ export class AuthService {
 
   public handleAuthentication(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.auth0.parseHash((err, authResult) => {
+      this.auth0.parseHash((err: any, authResult: any) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           window.location.hash = '';
-          this.setSession(authResult);        
+          this.setSession(authResult);
           this.router.navigate(['/tasks']);
           resolve();
         } else if (err) {
@@ -48,10 +46,10 @@ export class AuthService {
           reject();
         }
       });
-    });    
+    });
   }
 
-  private setSession(authResult): void {
+  private setSession(authResult: any): void {
     const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
 
     // If there is a value on the scope param from the authResult,
@@ -68,7 +66,7 @@ export class AuthService {
 
   public renewTokens(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.auth0.checkSession({}, (err, authResult) => {
+      this.auth0.checkSession({}, (err: any, authResult: any) => {
         if (authResult && authResult.accessToken && authResult.idToken) {
           this.setSession(authResult);
           this.router.navigate(['/tasks']);
@@ -79,7 +77,7 @@ export class AuthService {
           reject();
         }
       });
-    });    
+    });
   }
 
   public logout(): void {
@@ -100,18 +98,19 @@ export class AuthService {
     return new Date().getTime() < expiresAt;
   }
 
-  public getProfile(cb): void {
+  public getProfile(callback: Function): void {
     const accessToken = localStorage.getItem(this.accessTokenKey);
     if (!accessToken) {
       throw new Error('Access Token must exist to fetch profile');
     }
-  
+
     const self = this;
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
+    this.auth0.client.userInfo(accessToken, (err: any, profile: Profile) => {
       if (profile) {
         self.userProfile = profile;
       }
-      cb(err, profile);
+      callback(err, profile);
+      this.router.navigate(['/tasks']);
     });
   }
 }

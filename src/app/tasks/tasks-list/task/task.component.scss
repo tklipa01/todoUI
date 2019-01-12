@@ -1,0 +1,77 @@
+@import '../../../../colors.scss';
+
+.task {
+    background-color: $task-bg-color;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.task:hover .delete-task {
+    display: block;
+    color: $danger-color;
+}
+
+.task:hover .edit-task {
+    display: block;
+    color: $primary-color;    
+}
+
+.task:hover .delete-task:hover {
+    color: darken($danger-color, 10%);
+}
+
+.task:hover .complete-task {
+    display: block;
+    color: $success-color;
+}
+
+.task:hover .edit-task:hover {
+    color: darken($primary-color, 10%);
+}
+
+.task:hover .complete-task:hover {
+    color: darken($success-color, 10%);
+}
+
+.task:hover .task-status {
+    display: none;
+}
+
+.complete-task {
+    display: none;
+    margin-right: 5px;
+}
+
+.delete-task {
+    display: none;
+    margin-left: 5px;
+}
+
+.edit-task {
+    display: none;
+    margin: 0 5px;
+}
+
+.task-status {
+    color: darken($task-bg-color, 10%);
+}
+
+.completed-task{
+    color: $success-color;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    flex: 1;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.details {
+    font-size: 1em;    
+}
+

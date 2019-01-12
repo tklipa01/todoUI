@@ -1,0 +1,16 @@
+<div class="actions">
+    <div *ngIf="type === taskListEnum.Active">
+        <new-task (createTaskEventEmitter)="createTaskHandler($event)"></new-task>
+    </div>
+    <div *ngIf="type === taskListEnum.Completed && tasks.length > 0">
+        <button (click)="deleteAllCompleted()" class="btn-delete">Clear</button>
+    </div>
+    <div *ngIf="type === taskListEnum.Completed && tasks.length === 0" style="text-align: center; color: #31493c; margin-top: 30%;">
+        <h4>No completed tasks :(</h4>         
+        <h2>Get to work!</h2>
+    </div>
+</div>
+<div *ngFor="let task of tasks" class="tasks-list">
+    <task [task]="task" (completeTaskEventEmitter)="completeTaskHandler($event)" (deleteTaskEventEmitter)="deleteTaskHandler($event)"></task>
+</div>
+

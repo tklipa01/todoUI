@@ -1,8 +1,28 @@
-<div *ngFor="let task of tasks">
-    {{task.title}}<br>
-    {{task.details}}<br>
-    {{task.createdOn}}<br>
-    {{task.completed}}
-    <br>
-    <br>
+<div *ngIf="loadingTasks" class="lds-dual-ring centered"></div>
+<div class="tasks-large">
+    <div class="active-tasks">
+        <tasks-list [tasks]="activeTasks" [type]="taskListEnum.Active" (completeTaskEventEmitter)="completeTaskHandler($event)" (deleteTaskEventEmitter)="deleteTaskHandler($event)"
+            (createTaskEventEmitter)="createTaskHandler($event)"></tasks-list>
+    </div>
+    <div class="completed-tasks">
+        <tasks-list [tasks]="completedTasks" [type]="taskListEnum.Completed"></tasks-list>
+    </div>    
+</div>
+
+<div class="tasks-small">
+    <div class="active-tasks" *ngIf="selectedTab === taskListEnum.Active">
+        <tasks-list [tasks]="activeTasks" [type]="taskListEnum.Active" (completeTaskEventEmitter)="completeTaskHandler($event)" (deleteTaskEventEmitter)="deleteTaskHandler($event)"
+            (createTaskEventEmitter)="createTaskHandler($event)"></tasks-list>
+    </div>
+    <div class="completed-tasks" *ngIf="selectedTab === taskListEnum.Completed">
+        <tasks-list [tasks]="completedTasks" [type]="taskListEnum.Completed" (deleteAllCompletedEventEmitter)="deleteAllCompletedHandler()"></tasks-list>
+    </div>  
+    <div class="tabs">
+        <div class="tab-item clickable" [ngClass]="{'tab-item-active' : selectedTab === taskListEnum.Active}" (click)="switchTab()">
+            Active
+        </div>
+        <div class="tab-item clickable" [ngClass]="{'tab-item-active' : selectedTab === taskListEnum.Completed}" (click)="switchTab()">
+            Completed
+        </div>
+    </div>
 </div>
