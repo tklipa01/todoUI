@@ -15,8 +15,8 @@ export class AuthService {
   private idTokenKey = 'id_token';
   private expiresAtKey = 'expires_at';
   private scopesKey = 'scopes';
-  private redirectUri = 'http://localhost:4200/tasks';
-  //private redirectUri = 'https://todoui.appspot.com/tasks';
+  //private redirectUri = 'http://localhost:4200/tasks';
+  private redirectUri = 'https://todoui.appspot.com/tasks';
 
   private auth0 = new auth0.WebAuth({
     clientID: 'SNkl18d3r4OPTob3uTa8n1UR7mUsx2mG',

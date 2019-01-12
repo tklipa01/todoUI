@@ -12,10 +12,10 @@
 <div class="tasks-small">
     <div class="tabs">
         <div class="tab-item clickable" [ngClass]="{'tab-item-active' : selectedTab === taskListEnum.Active}" (click)="switchTab()">
-            Active
+            Active <div class="badge badge-primary">{{activeTasks.length}}</div>
         </div>
         <div class="tab-item clickable" [ngClass]="{'tab-item-active' : selectedTab === taskListEnum.Completed}" (click)="switchTab()">
-            Completed
+            Completed <div class="badge badge-success">{{completedTasks.length}}</div>
         </div>
     </div>
     <div class="active-tasks" *ngIf="selectedTab === taskListEnum.Active">
