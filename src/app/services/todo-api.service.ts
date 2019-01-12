@@ -6,7 +6,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class TodoApiService  { 
 
-    private baseUrl = 'http://localhost:8080/';
+    //private baseUrl = 'http://localhost:8080/';
+    private baseUrl = 'https://todo-227319.appspot.com/';
 
     constructor(private http: HttpClient){
     }

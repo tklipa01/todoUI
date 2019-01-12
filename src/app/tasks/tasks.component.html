@@ -5,7 +5,7 @@
             (createTaskEventEmitter)="createTaskHandler($event)"></tasks-list>
     </div>
     <div class="completed-tasks">
-        <tasks-list [tasks]="completedTasks" [type]="taskListEnum.Completed"></tasks-list>
+        <tasks-list [tasks]="completedTasks" [type]="taskListEnum.Completed" (deleteAllCompletedEventEmitter)="deleteAllCompletedHandler()"></tasks-list>
     </div>    
 </div>
 

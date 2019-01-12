@@ -1,0 +1,9 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /
+  static_files: todoUI/index.html
+  upload: todoUI/index.html
+- url: /
+  static_dir: todoUI/

@@ -20,7 +20,7 @@ export class AuthService {
     clientID: 'SNkl18d3r4OPTob3uTa8n1UR7mUsx2mG',
     domain: 'my-todo.auth0.com',
     responseType: 'token id_token',
-    redirectUri: 'http://localhost:4200/tasks',
+    redirectUri: 'https://todoui.appspot.com/tasks',
     audience: 'todoAPI',
     scope: this.requestedScopes
   });
