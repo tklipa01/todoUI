@@ -29,6 +29,10 @@ export class NewTaskComponent {
         });
     }
 
+    ngOnDestroy(): void {
+        this.createdTaskSubscription.unsubscribe();
+    }
+
     isEditing(){
         if((this.task.title != undefined && this.task.title != '') || (this.task.title == '' && (this.task.details != undefined && this.task.details != ''))){
             this.editing = true;
